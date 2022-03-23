@@ -58,7 +58,7 @@ step2: generate exe   生成exe
 ```
 nim c --cpu:i386 -d:mingw -d:ssl --opt:size shellcode_loader.nim
 ```
-#Advise 建议
+# Advise 建议
 windows上编译容易出现玄学问题 可以用debian11交叉编译 不过记得要装mingw
 It's easy to have problem if you compile it on Windows Platform.In my opion,you'd better compile it on Linux
 
