@@ -1,4 +1,5 @@
 # nim_shellloader
+nim,免杀,红队,shellcode,bypass
 
 nim编写的shell_loader
 
