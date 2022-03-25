@@ -58,9 +58,17 @@ nim c --cpu:i386 -d:mingw -d:ssl --opt:size shellcode_loader.nim
 ```
 # Advise 建议
 windows上编译容易出现玄学问题 可以用debian11交叉编译 不过记得要装mingw
+
+
 It's easy to have problem if you compile it on Windows Platform.In my opion,you'd better compile it on Linux
+
+
 如果出现:```could not load:(libcrypto-1_1|libeay32).dll```
+
+
 考虑是运行的平台问题 因为编译的时候i386是x86的   所以出现这个问题就把i386换成amd64
+
+
 ```
 nim c --cpu:amd64 -d:mingw -d:ssl --opt:size shellcode_loader.nim
 ```
