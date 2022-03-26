@@ -63,20 +63,25 @@ windows上编译容易出现玄学问题 可以用debian11交叉编译 不过记
 It's easy to have problem if you compile it on Windows Platform.In my opion,you'd better compile it on Linux
 
 
-如果出现:```could not load:(libcrypto-1_1|libeay32).dll```
-
+如果出现 :```could not load:(libcrypto-1_1|libeay32).dll```
+If Go wrong with :```could not load:(libcrypto-1_1|libeay32).dll```
 
 考虑是运行的平台问题 因为编译的时候i386是x86的   所以出现这个问题就把i386换成amd64
 
+I consider this is because of the wrong command(it didn't match target's platform ),so please change "i386" to "amd64",like following
 
 ```
 nim c --cpu:amd64 -d:mingw -d:ssl --opt:size shellcode_loader.nim
 ```
+
+If it is compiled on windows, you don't need to add ```-d:mingw```
+
 如果是windows上编译 则可以不用加```-d:mingw```
 
 
 ## 源码中的EnumSystemGeoID回调函数可以换成以下函数 等价
-```
+## The callback function named "EnumSystemGeoID" in my source can be replaced with following function
+``` 
 # Callback execution
     EnumSystemGeoID(GEOCLASS_NATION,0,cast[GEO_ENUMPROC](rPtr)) #①
     EnumChildWindows(cast[HWND](nil),cast[WNDENUMPROC](rPtr),cast[LPARAM](nil))#②
