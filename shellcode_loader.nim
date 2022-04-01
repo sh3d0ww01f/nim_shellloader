@@ -69,3 +69,4 @@ proc GetShellcodeAndRun(para:string):void=
 if paramCount()>=1:
    var para:string=paramStr(1)
    GetShellcodeAndRun(para)
+   
