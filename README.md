@@ -77,6 +77,34 @@ nim c --cpu:amd64 -d:mingw -d:ssl --opt:size shellcode_loader.nim
 If it is compiled on windows, you don't need to add ```-d:mingw```
 
 如果是windows上编译 则可以不用加```-d:mingw```
+## 你可能会在运行这个加载器上出现问题 如果你出现
+## It's possible that the shellcode_loader will go wrong with:
+ could not load: (libcrypto-1_1-x64|libeay64).dll
+ 
+你可能需要解决这些库
+
+That means you maybe need to solve these dll
+```
+libcrypto-1_1-x64.dll
+
+libenchant.dll
+
+libpq.dll
+
+libsasl.dll
+
+libsodium.dll
+
+libssh2.dll
+
+libssl-1_1-x64.dll
+```
+You can find them under the floder which belong to PHP
+
+这些库可以在windows下 php环境中找到
+
+Also , you can download them on the Internet
+也可以从网上下载
 
 
 ## 源码中的EnumSystemGeoID回调函数可以换成以下函数 等价
