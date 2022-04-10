@@ -1,10 +1,8 @@
 import httpclient
 import streams
-import OpenSSL
 import os
 import strutils
 import winim/lean
-import osproc
 import stew/byteutils
 import net
 proc shellcodeCallback(shellcode: openarray[byte]): void =
