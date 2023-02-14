@@ -49,8 +49,8 @@ Notice:You must remove '\x' on your shellcode
 
 step1:   setup  require   安装所需的库
 ```
-nimble install https://gitee.com/oagi/winim.git
-nimble install https://gitee.com/oagi/nim-stew
+nimble install https://github.com/khchen/winim
+nimble install https://github.com/status-im/nim-stew
 ```
 step2: generate exe   生成exe
 ```
